@@ -27,7 +27,21 @@ urlpatterns = [
     path('resistance_frequency_capacitance/',views.resistance_frequency_capacitance),
     path('resistance_frequency_capacitance/resistance_frequency_capacitance',views.resistance_frequency_capacitance),
     path('kinematic/',views.kinematic),
-    path('kinematic/kinematic',views.kinematic)
-
-
+    path('kinematic/kinematic',views.kinematic),
+    path('voltageresistancepowercurrent/',views.voltageresistancepowercurrent),
+    path('voltageresistancepowercurrent/voltageresistancepowercurrent',views.voltageresistancepowercurrent),
+    path('specificheatanddensity/',views.specificheatanddensity),
+    path('specificheatanddensity/specificheatanddensity',views.specificheatanddensity),
+    path('roundone/',views.roundone),
+    path('roundone/roundone',views.roundone),
+    path('roundtotwo/',views.roundtotwo),
+    path('roundtotwo/roundtotwo',views.roundtotwo),
+    path('roundtothree/',views.roundtothree),
+    path('roundtothree/roundtothree',views.roundtothree),
+    path('sigfig/',views.sigfig),
+    path('sigfig/sigfig',views.sigfig),
+    path('time_clock_15_minutes/',views.time_clock_15_minutes),
+    path('time_clock_15_minutes/time_clock_15_minutes',views.time_clock_15_minutes),
+    path('nearest_eighth/',views.nearest_eighth),
+    path('nearest_eighth/nearest_eighth',views.nearest_eighth)
 ]

@@ -1,4 +1,5 @@
-from math import sqrt
+from math import sqrt,log10,floor,ceil
+import numpy as np
 def conv(c,em,ea):
     converted_speed = 0
     converted_speed_m_s = 0
@@ -1066,3 +1067,54 @@ def kinvt(s,a,u):
     v = sqrt((u**2)+(2*a*s))
     t = (v-u)/a
     return [v,t]
+def viprv(r,i,p):
+    return i*r
+def viprr(v,i,p):
+    return v/i
+def vipri(v,r,p):
+    return v/r
+def viprp(v,r,i):
+    return (v**2)/r
+
+def shdc(m,t1,t2,q):
+    return q/(m*(t2-t1))
+def shdm(c,t1,t2,q):
+    return q/(c*(t2-t1))
+def shdt1(c,m,t2,q):
+    return t2-(q/(c*m))
+def shdt2(c,m,t1,q):
+    return t1 + (q/(c*m))
+def shdq(c,m,t1,t2):
+    return c*(m*(t2-t1))
+
+
+def roundtoone(num1):
+    return round(num1,1)
+
+def roundtwo(num1):
+    return round(num1,2)
+
+def roundthree(num1):
+    return round(num1,3)
+
+def roundit(x, sig):
+    return round(x, sig-int(floor(log10(abs(x))))-1)
+
+def min_15_round(n1,n2):
+    if n2 in ('0','1','2','3','4','5','6','7'):
+        return n1+':'+'00'
+    elif  n2 in ('8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22'):
+        return n1+':'+'15'
+    elif n2 in ('23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37'):
+        return n1+':'+'30'
+    elif n2 in ('38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52'):
+        return n1+':'+'45'
+    elif n2 in ('53', '54', '55', '56', '57', '58', '59', '60'):
+        if n1=='23':
+            return '00'+':'+'00'
+        else:
+            return str(int(n1)+1)+':'+'00'
+
+def roundeighth(num1):
+    return ceil(num1*8)/8
+

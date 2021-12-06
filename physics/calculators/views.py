@@ -2223,6 +2223,597 @@ def kinematic(request):
     'uk1':uk1,'uk2':uk2,'unit1':unit1,'unit2':unit2,'cas':cas,'res':res,'tf1':tf1,'tf2':tf2,'gn1':gn1,'gn2':gn2,'gn3':gn3,
     'f1':f1,'f2':f2})
 
+def  voltageresistancepowercurrent(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+        num3 = request.POST['num3']
+        num4 = request.POST['num4']
+    except:
+        v = ''
+        i = ''
+        p = ''
+        r = ''
+        gn1 = ''
+        gn2 = ''
+        gn3 = ''
+        uks = ''
+        ukv = ''
+        g1 = ''
+        g2 = ''
+        g3 = ''
+        u1 = ''
+        u2 = ''
+        u3 = ''
+        unit = ''
+        cas = False
+    else:
+        if num1=='x':
+            try:
+                r = float(num2)
+                i = float(num3)
+                p = float(num4)
+            except:
+                v = ''
+                i = ''
+                p = ''
+                r = ''
+                gn1 = ''
+                gn2 = ''
+                gn3 = ''
+                uks = ''
+                ukv = ''
+                g1 = ''
+                g2 = ''
+                g3 = ''
+                u1 = ''
+                u2 = ''
+                u3 = ''
+                unit = ''
+                cas = False
+            else:
+                ukv = viprv(r,i,p)
+                v = ''
+                g1 = 'Resistance'
+                g2 = 'Current'
+                g3 = 'Power'
+                gn1 = r
+                gn2 = i
+                gn3 = p
+                uks = 'Voltage'
+                u1 = 'Ω'
+                u2 = 'Amps'
+                u3 = 'Watt'
+                unit = 'volts'
+                cas = True
+        elif num2=='x':
+            try:
+                v = float(num1)
+                i = float(num3)
+                p = float(num4)
+            except:
+                v = ''
+                i = ''
+                p = ''
+                r = ''
+                gn1 = ''
+                gn2 = ''
+                gn3 = ''
+                uks = ''
+                ukv = ''
+                g1 = ''
+                g2 = ''
+                g3 = ''
+                u1 = ''
+                u2 = ''
+                u3 = ''
+                unit = ''
+                cas = False
+            else:
+                ukv = viprr(v,i,p)
+                r = ''
+                g1 = 'Voltage'
+                g2 = 'Current'
+                g3 = 'Power'
+                gn1 = v
+                gn2 = i
+                gn3 = p
+                uks = 'Resistance'
+                u1 = 'volts'
+                u2 = 'Amps'
+                u3 = 'Watt'
+                unit = 'Ω'
+                cas = True
+        elif num3=='x':
+            try:
+                v = float(num1)
+                r = float(num2)
+                p = float(num4)
+            except:
+                v = ''
+                i = ''
+                p = ''
+                r = ''
+                gn1 = ''
+                gn2 = ''
+                gn3 = ''
+                uks = ''
+                ukv = ''
+                g1 = ''
+                g2 = ''
+                g3 = ''
+                u1 = ''
+                u2 = ''
+                u3 = ''
+                unit = ''
+                cas = False
+            else:
+                ukv = vipri(v,r,p)
+                i = ''
+                g1 = 'Voltage'
+                g2 = 'Resistance'
+                g3 = 'Power'
+                gn1 = v
+                gn2 = r
+                gn3 = p
+                uks = 'Current'
+                u1 = 'volts'
+                u2 = 'Ω'
+                u3 = 'Watt'
+                unit = 'Amps'
+                cas = True
+        else:
+            try:
+                v = float(num1)
+                r = float(num2)
+                i = float(num3)
+            except:
+                v = ''
+                i = ''
+                p = ''
+                r = ''
+                gn1 = ''
+                gn2 = ''
+                gn3 = ''
+                uks = ''
+                ukv = ''
+                g1 = ''
+                g2 = ''
+                g3 = ''
+                u1 = ''
+                u2 = ''
+                u3 = ''
+                unit = ''
+                cas = False
+            else:
+                ukv = viprp(v,r,i)
+                p = ''
+                g1 = 'Voltage'
+                g2 = 'Resistance'
+                g3 = 'Current'
+                gn1 = v
+                gn2 = r
+                gn3 = i
+                uks = 'Power'
+                u1 = 'volts'
+                u2 = 'Ω'
+                u3 = 'Amps'
+                unit = 'Watts'
+                cas = True
+    return render(request,'voltageresistancepowercurrent.html',{'ukv':ukv,'uks':uks,'v':v,'i':i,'p':p,'r':r,'gn1':gn1,'gn2':gn2,'gn3':gn3,
+    'g1':g1,'g2':g2,'g3':g3,'u1':u1,'u2':u2,'u3':u3,'unit':unit,'cas':cas})
+
+def specificheatanddensity(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+        num3 = request.POST['num3']
+        num4 = request.POST['num4']
+        num5 = request.POST['num5']
+    except:
+        c = ''
+        q = ''
+        m = ''
+        t2 = ''
+        t1 = ''
+        gn1 = ''
+        gn2 = ''
+        gn3 = ''
+        gn4 = ''
+        uks = ''
+        ukv = ''
+        g1 = ''
+        g2 = ''
+        g3 = ''
+        g4 = ''
+        u1 = ''
+        u2 = ''
+        u3 = ''
+        u4 = ''
+        unit = ''
+        cas = False
+    else:
+        if num1=='x':
+            try:
+                m = float(num2)
+                t1 = float(num3)
+                t2 = float(num4)
+                q = float(num5)
+            except:
+                c = ''
+                q = ''
+                m = ''
+                t2 = ''
+                t1 = ''
+                gn1 = ''
+                gn2 = ''
+                gn3 = ''
+                gn4 = ''
+                uks = ''
+                ukv = ''
+                g1 = ''
+                g2 = ''
+                g3 = ''
+                g4 = ''
+                u1 = ''
+                u2 = ''
+                u3 = ''
+                u4 = ''
+                unit = ''
+                cas = False
+            else:
+                ukv = shdc(m,t1,t2,q)
+                c = ''
+                g1 = 'Mass'
+                g2 = 'Initial Temperature'
+                g3 = 'Final Temperature'
+                g4 = 'Heat Energy'
+                gn1 = m
+                gn2 = t1
+                gn3 = t2
+                gn4 = q
+                uks = 'Specific Heat'
+                u1 = 'Kg'
+                u2 = 'Kelvin'
+                u3 = 'Kelvin'
+                u4 = 'Joules'
+                unit = 'Joule/kg.K'
+                cas = True
+        elif num2=='x':
+            try:
+                c = float(num1)
+                t1 = float(num3)
+                t2 = float(num4)
+                q = float(num5)
+            except:
+                c = ''
+                q = ''
+                m = ''
+                t1 = ''
+                t2 = ''
+                gn1 = ''
+                gn2 = ''
+                gn3 = ''
+                gn4 = ''
+                uks = ''
+                ukv = ''
+                g1 = ''
+                g2 = ''
+                g3 = ''
+                g4 = ''
+                u1 = ''
+                u2 = ''
+                u3 = ''
+                u4 = ''
+                unit = ''
+                cas = False
+            else:
+                ukv = shdm(c,t1,t2,q)
+                m = ''
+                g1 = 'Specific Heat'
+                g2 = 'Initial Temperature'
+                g3 = 'Final Temperature'
+                g4 = 'Heat Energy'
+                gn1 = c
+                gn2 = t1
+                gn3 = t2
+                gn4 = q
+                uks = 'Mass'
+                u1 = 'Joule/Kg.K'
+                u2 = 'Kelvin'
+                u3 = 'Kelvin'
+                u4 = 'Joule'
+                unit = 'Kg'
+                cas = True
+        elif num3=='x':
+            try:
+                c = float(num1)
+                m = float(num2)
+                t2 = float(num4)
+                q = float(num5)
+            except:
+                c = ''
+                m = ''
+                t2 = ''
+                t1 = ''
+                q = ''
+                gn1 = ''
+                gn2 = ''
+                gn3 = ''
+                gn4 = ''
+                uks = ''
+                ukv = ''
+                g1 = ''
+                g2 = ''
+                g3 = ''
+                g4 = ''
+                u1 = ''
+                u2 = ''
+                u3 = ''
+                u4 = ''
+                unit = ''
+                cas = False
+            else:
+                ukv = shdt1(c,m,t2,q)
+                t1 = ''
+                g1 = 'Specific Heat'
+                g2 = 'Mass'
+                g3 = 'Final Temperature'
+                g4 = 'Heat Energy'
+                gn1 = c
+                gn2 = m
+                gn3 = t2
+                gn4 = q
+                uks = 'Initial Temperature'
+                u1 = 'Joule/kg.K'
+                u2 = 'Kg'
+                u3 = 'Kelvin'
+                u4 = 'Joule'
+                unit = 'Kelvin'
+                cas = True
+        elif num4=='x':
+            try:
+                c = float(num1)
+                m = float(num2)
+                t1 = float(num3)
+                q = float(num5)
+            except:
+                c = ''
+                m = ''
+                t1 = ''
+                q = ''
+                t2 = ''
+                gn1 = ''
+                gn2 = ''
+                gn3 = ''
+                gn4 = ''
+                uks = ''
+                ukv = ''
+                g1 = ''
+                g2 = ''
+                g3 = ''
+                g4 = ''
+                u1 = ''
+                u2 = ''
+                u3 = ''
+                u4 = ''
+                unit = ''
+                cas = False
+            else:
+                ukv = shdt2(c,m,t1,q)
+                t2 = ''
+                g1 = 'Specific Heat'
+                g2 = 'Mass'
+                g3 = 'Initial Temperature'
+                g4 = 'Heat Energy'
+                gn1 = c
+                gn2 = m
+                gn3 = t1
+                gn4 = q
+                uks = 'Final Temperature'
+                u1 = 'Joule/kg.K'
+                u2 = 'Kg'
+                u3 = 'Kelvin'
+                u4 = 'Joule'
+                unit = 'Kelvin'
+                cas = True
+        else:
+            try:
+                c = float(num1)
+                m = float(num2)
+                t1 = float(num3)
+                t2 = float(num4)
+            except:
+                c = ''
+                m = ''
+                t1 = ''
+                q = ''
+                t2 = ''
+                gn1 = ''
+                gn2 = ''
+                gn3 = ''
+                gn4 = ''
+                uks = ''
+                ukv = ''
+                g1 = ''
+                g2 = ''
+                g3 = ''
+                g4 = ''
+                u1 = ''
+                u2 = ''
+                u3 = ''
+                u4 = ''
+                unit = ''
+                cas = False
+            else:
+                ukv = shdq(c,m,t1,t2)
+                q = ''
+                g1 = 'Specific Heat'
+                g2 = 'Mass'
+                g3 = 'Initial Temperature'
+                g4 = 'Final Temeprature'
+                gn1 = c
+                gn2 = m
+                gn3 = t1
+                gn4 = t2
+                uks = 'Heat Energy'
+                u1 = 'Joule/kg.K'
+                u2 = 'Kg'
+                u3 = 'Kelvin'
+                u4 = 'Kelvin'
+                unit = 'Joules'
+                cas = True
+
+    return render(request,'specificheatanddensity.html',{'ukv':ukv,'uks':uks,'c':c,'q':q,'m':m,'t2':t2,'t1':t1,'gn1':gn1,'gn2':gn2,'gn3':gn3,'gn4':gn4,
+    'g1':g1,'g2':g2,'g3':g3,'g4':g4,'u1':u1,'u2':u2,'u3':u3,'u4':u4,'unit':unit,'cas':cas})
+def roundone(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        res = ''
+        dec = ''
+        c1 = ''
+        c2 = ''
+        cas = False
+    else:
+        num1 = float(num1)
+        res = roundtoone(num1)
+        a = str(num1*100)
+        b = a.split('.')
+        s = b[0]
+        dec = s[-1]
+        if int(dec)>=5:
+            c1 = True
+        else:
+            c1 = False
+        if int(dec)<5:
+            c2 = True
+        else:
+            c2 = False
+        cas = True
+    return render(request,'roundonedecimal.html',{'num1':num1,'res':res,'cas':cas,'dec':dec,'c1':c1,'c2':c2})
+
+def roundtotwo(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        res = ''
+        dec = ''
+        c1 = ''
+        c2 = ''
+        cas = False
+    else:
+        num1 = float(num1)
+        res = roundtwo(num1)
+        a = str(num1*1000)
+        b = a.split('.')
+        s = b[0]
+        dec = s[-1]
+        if int(dec)>=5:
+            c1 = True
+        else:
+            c1 = False
+        if int(dec)<5:
+            c2 = True
+        else:
+            c2 = False
+        cas = True
+    return render(request,'roundtotwo.html',{'num1':num1,'res':res,'cas':cas,'c1':c1,'c2':c2,'dec':dec})
+
+def roundtothree(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        res = ''
+        dec = ''
+        c1 = ''
+        c2 = ''
+        cas = ''
+    else:
+        num1 = float(num1)
+        res = roundthree(num1)
+        a = str(num1*10000)
+        b = a.split('.')
+        s = b[0]
+        dec = s[-1]
+        if int(dec)>=5:
+            c1 = True
+        else:
+            c1 = False
+        if int(dec)<5:
+            c2 = True
+        else:
+            c2 = False
+        cas = True
+    return render(request,'roundtothree.html',{'num1':num1,'res':res,'cas':cas,'dec':dec,'c1':c1,'c2':c2})
+
+def sigfig(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+    except:
+        num1 = ''
+        res = ''
+        num2 = ''
+        cas = ''
+    else:
+        a_number = float(num1)
+        sig = int(num2)
+        res = roundit(a_number,sig)
+        cas = True
+    return render(request,'sigfig.html',{'num1':num1,'res':res,'cas':cas,'num2':num2})
+
+def time_clock_15_minutes(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        n = ''
+        resminute = ''
+        final = ''
+        cas = False
+        scas = False
+    else:
+        num1 = str(num1)
+        n = num1.split(":")
+        if n[0] in ('00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12','13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'):
+            final = min_15_round(n[0],n[1])
+            cas = True
+            if n[1] in ('53', '54', '55', '56', '57', '58', '59', '60'):
+                scas = True
+            else:
+                scas = False
+        else:
+            final = ''
+            cas = False
+            scas = False
+    return render(request,'time15minute.html',{'final':final,'cas':cas,'min':n[1],'scas':scas})
+
+def nearest_eighth(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        res = ''
+        step1 = ''
+        step2 = ''
+        cas = False
+    else:
+        num1 = float(num1)
+        step1 = num1*8
+        step2 = ceil(step1)
+        res = roundeighth(num1)
+        cas = True
+    return render(request,'nearesteighth.html',{'cas':cas,'res':res,'num1':num1,'step1':step1,'step2':step2})
+
+
+
+
+
+
 
 
 
