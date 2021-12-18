@@ -24,4 +24,6 @@ urlpatterns = [
     path('time_clock_15_minutes/',views.time_clock_15_minutes,name = 'time_clock_15_minutes'),
     path('nearest_eighth/',views.nearest_eighth,name = 'nearest_eighth'),
     path('identifying_perfect_cube/',views.identifying_perfect_cube,name = 'identifying_perfect_cube'),
+    path('cancel_out/',views.cancel_out,name = 'cancel_out'),
+    path('feet_inch/',views.feet_inch,name = 'feet_inch'),
 ]

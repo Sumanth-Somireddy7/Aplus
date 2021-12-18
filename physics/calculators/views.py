@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .methods import *
 from num2words import num2words
+from django.http import HttpResponse
 
 # Create your views here.
 def speed_convert(request):
@@ -3059,10 +3060,12 @@ def time_clock_15_minutes(request):
         final = ''
         cas = False
         scas = False
+        min = ''
     else:
         num1 = str(num1)
         n = num1.split(":")
-        if n[0] in ('00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12','13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'):
+        min = n[0]
+        if min in ('00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12','13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'):
             final = min_15_round(n[0],n[1])
             cas = True
             if n[1] in ('53', '54', '55', '56', '57', '58', '59', '60'):
@@ -3073,7 +3076,7 @@ def time_clock_15_minutes(request):
             final = ''
             cas = False
             scas = False
-    return render(request,'time15minute.html',{'final':final,'cas':cas,'min':n[1],'scas':scas,'num1':num1})
+    return render(request,'time15minute.html',{'final':final,'cas':cas,'min':min,'scas':scas,'num1':num1})
 
 def nearest_eighth(request):
     try:
@@ -3117,6 +3120,66 @@ def identifying_perfect_cube(request):
             st = ''
             c2 = True
     return render(request,'identifyperfectcube.html',{'cas':cas,'resa':resa,'num1':num1,'resb':resb,'c1':c1,'c2':c2,'st':st})
+
+def cancel_out(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+    except:
+        num1 = ''
+        num2 = ''
+        resn = ''
+        resd = ''
+        cas = False
+        gcd = ''
+    else:
+        res = cancel(num1,num2)
+        resn = res[0]
+        resd = res[1]
+        gcd = res[2]
+        cas = True
+    return render(request,'cancelout.html',{'num1':num1,'num2':num2,'cas':cas,'resn':resn,'resd':resd,'gcd':gcd})
+
+def feet_inch(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+    except:
+        num1 = ''
+        num2 = ''
+        msg = ''
+        ro = ''
+        resf = ''
+        resi = ''
+        cas = False
+        cas1 = False
+    else:
+        try:
+            num1 = int(num1)
+            num2 = int(num2)
+        except:
+            num1 = ''
+            num2 = ''
+            msg = ''
+            ro = ''
+            resf = ''
+            resi = ''
+            cas = False
+            cas1 = False
+        else:
+            res = feetinch(num1,num2)
+            resf = res[0]
+            resi = res[1]
+            msg = res[2]
+            ro = res[3]
+            cas1 = res[4]
+            cas = res[4]
+    return render(request,'feetinch.html',{'cas':cas,'resf':resf,'resi':resi,'msg':msg,'ro':ro,'num1':num1,'num2':num2,'cas1':cas1})
+
+
+
+
+
 
 
 

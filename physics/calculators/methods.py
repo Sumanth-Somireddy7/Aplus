@@ -1,4 +1,5 @@
-from math import sqrt,log10,floor,ceil
+from math import sqrt,log10,floor,ceil,gcd
+from decimal import *
 import numpy as np
 def conv(c,em,ea):
     converted_speed = 0
@@ -1125,4 +1126,61 @@ def ipd(n):
     else:
         return [cube_root,'is not a perfect cube',False]
     
+
+def byte4(f1,f2,mu,to):
+    st = str(f1)+str(f2)+' '+'x'+' '+str(mu)+' '+'±'+' '+str(to)
+    return st
+def byte5(f1,f2,f3,mu,to):
+    st = str(f1)+str(f2)+str(f3)+'x'+str(mu)+'±'+str(to)
+    return st
+
+def cancel(n1,n2):
+    n1 = int(n1)
+    n2 = int(n2)
+    div = gcd(n1,n2)
+    resn = n1//div
+    resd = n2//div
+    return [resn,resd,div]
+
+def feetinch(f,i):
+    if i >5 and i<=12:
+        f = f+1
+        i = 0
+        msg = "greater than 5"
+        ro = "Round up the Feet"
+        cas = True
+    elif i==5:
+        f = f+1
+        i = 0
+        msg = "equal to 5"
+        ro = "Round up the feet"
+        cas = True
+    elif i<5:
+        i = 0
+        msg = "less than 5"
+        ro = "Round down the feet"
+        cas = True
+    else:
+        f = ''
+        i = ''
+        msg = ''
+        ro = ''
+        cas = False
+    return [f,i,msg,ro,cas]
+
+def nearfeet(num1):
+    whole = round(num1)
+    if num1>=1000:
+        thou = round(Decimal(num1),-3)
+    else:
+        thou = 0
+    if num1>=100:
+        hund = round(Decimal(num1),-2)
+    else:
+        hund = 0
+    if num1>=10:
+        tens = round(Decimal(num1),-1)
+    else:
+        tens = 0
+    return [whole,tens,hund,thou]
 
