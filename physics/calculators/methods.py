@@ -1,6 +1,15 @@
 from math import sqrt,log10,floor,ceil,gcd
 from decimal import *
 import numpy as np
+
+def get_pos_nums(num):
+    pos_nums = []
+    while num != 0:
+        pos_nums.append(num % 10)
+        num = num // 10
+    pos_nums.reverse()
+    return pos_nums
+
 def conv(c,em,ea):
     converted_speed = 0
     converted_speed_m_s = 0
@@ -1184,3 +1193,153 @@ def nearfeet(num1):
         tens = 0
     return [whole,tens,hund,thou]
 
+def h_3(num1):
+    t = get_pos_nums(int(num1))
+    tens = t[-3]
+    getcontext().prec = 100
+    res1 = round(Decimal(num1),-3)
+    if tens>5:
+        st = 'which is greater than 5'
+        st1 = 'So round up the number'
+    elif tens==5:
+        st = 'which is equal to 5'
+        st1 = 'So, round up the number'
+    else:
+        st = 'which is less than 5'
+        st1 = 'So, round down the number'
+    return [st,st1,tens]
+
+def h_2(num1):
+    t = get_pos_nums(int(num1))
+    tens = t[-2]
+    getcontext().prec=100
+    res1 = round(Decimal(num1), -2)
+    if tens>5:
+        st = 'which is greater than 5'
+        st1 = 'So round up the number'
+    elif tens==5:
+        st = 'which is equal to 5'
+        st1 = 'So, round up the number'
+    else:
+        st = 'which is less than 5'
+        st1 = 'So, round down the number'
+    return [st,st1,tens]
+
+def h_1(num1):
+    t = get_pos_nums(int(num1))
+    tens = t[-1]
+    getcontext().prec = 100
+    res1 = round(Decimal(num1),-1)
+    if tens>5:
+        st = 'which is greater than 5'
+        st1 = 'So round up the number'
+    elif tens==5:
+        st = 'which is equal to 5'
+        st1 = 'So, round up the number'
+    else:
+        st = 'which is less than 5'
+        st1 = 'So, round down the number'
+    return [st,st1,tens]
+
+def m_cm(f,i):
+    if i >50 and i<=100:
+        f = f+1
+        i = 0
+        msg = "greater than 50"
+        ro = "Round up the meter"
+        cas = True
+    elif i==50:
+        f = f+1
+        i = 0
+        msg = "equal to 50"
+        ro = "Round up the meter"
+        cas = True
+    elif i<50:
+        i = 0
+        msg = "less than 50"
+        ro = "Round down the meter"
+        cas = True
+    else:
+        f = ''
+        i = ''
+        msg = ''
+        ro = ''
+        cas = False
+    return [f,i,msg,ro,cas]
+def cm_mm(f,i):
+    if i >5 and i<=10:
+        f = f+1
+        i = 0
+        msg = "greater than 5"
+        ro = "Round up the centimeter"
+        cas = True
+    elif i==5:
+        f = f+1
+        i = 0
+        msg = "equal to 5"
+        ro = "Round up the centimeter"
+        cas = True
+    elif i<5:
+        i = 0
+        msg = "less than 5"
+        ro = "Round down the centimeter"
+        cas = True
+    else:
+        f = ''
+        i = ''
+        msg = ''
+        ro = ''
+        cas = False
+    return [f,i,msg,ro,cas]
+
+def km_m(f,i):
+    if i >500 and i<=1000:
+        f = f+1
+        i = 0
+        msg = "greater than 500"
+        ro = "Round up the kilometer"
+        cas = True
+    elif i==500:
+        f = f+1
+        i = 0
+        msg = "equal to 500"
+        ro = "Round up the kilometer"
+        cas = True
+    elif i<500:
+        i = 0
+        msg = "less than 500"
+        ro = "Round down the kilometer"
+        cas = True
+    else:
+        f = ''
+        i = ''
+        msg = ''
+        ro = ''
+        cas = False
+    return [f,i,msg,ro,cas]
+
+def mm_mi(f,i):
+    if i >500 and i<=1000:
+        f = f+1
+        i = 0
+        msg = "greater than 500"
+        ro = "Round up the meter"
+        cas = True
+    elif i==500:
+        f = f+1
+        i = 0
+        msg = "equal to 500"
+        ro = "Round up the meter"
+        cas = True
+    elif i<500:
+        i = 0
+        msg = "less than 500"
+        ro = "Round down the meter"
+        cas = True
+    else:
+        f = ''
+        i = ''
+        msg = ''
+        ro = ''
+        cas = False
+    return [f,i,msg,ro,cas]

@@ -3176,19 +3176,862 @@ def feet_inch(request):
             cas = res[4]
     return render(request,'feetinch.html',{'cas':cas,'resf':resf,'resi':resi,'msg':msg,'ro':ro,'num1':num1,'num2':num2,'cas1':cas1})
 
+def nearest_feet(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        whole = ''
+        tens = ''
+        hund = ''
+        thou = ''
+        cas1 = False
+        placeten = ''
+        placehun = ''
+        placetho = ''
+        st = ''
+        st1 = ''
+        tensid = ''
+        sh = ''
+        sh1 = ''
+        hunid = ''
+        sth = ''
+        sth1 = ''
+        thouid = ''
+    else:
+        try:
+            num1 = float(num1)
+        except:
+            num1 = ''
+            cas = False
+            whole = ''
+            tens = ''
+            hund = ''
+            thou = ''
+            cas1 = False
+            placeten = ''
+            placehun = ''
+            placetho = ''
+            st = ''
+            st1 = ''
+            tensid = ''
+            sh = ''
+            sh1 = ''
+            hunid = ''
+            sth = ''
+            sth1 = ''
+            thouid = ''
+        else:
+            if num1.is_integer():
+                cas1 = False
+            else:
+                cas1 = True
+            rnth = h_3(num1)
+            rnh = h_2(num1)
+            rnt = h_1(num1)
+            placeten = 'ones'
+            placehun = 'tens'
+            placetho = 'hundred'
+            st = rnt[0]
+            st1 = rnt[1]
+            tensid = rnt[2]
+            sh = rnh[0]
+            sh1 = rnh[1]
+            hunid = rnh[2]
+            sth = rnth[0]
+            sth1 = rnth[1]
+            thouid = rnth[2]
+            res = nearfeet(num1)
+            whole = res[0]
+            tens = res[1]
+            hund = res[2]
+            thou = res[3]
+            cas = True
+    return render(request,'nearestfeet.html',{'num1':num1,'whole':whole,'tens':tens,'hund':hund,'thou':thou,'cas':cas,
+    'placeten':placeten,'placehun':placehun,'placetho':placetho,'st':st,'st1':st,'sh':sh,'sh1':sh1,
+    'sth':sth,'sth1':sth1,'tensid':tensid,'hunid':hunid,'thouid':thouid,'cas1':cas1})
 
+def meter_centimeter(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+    except:
+        num1 = ''
+        num2 = ''
+        msg = ''
+        ro = ''
+        resf = ''
+        resi = ''
+        cas = False
+        cas1 = False
+    else:
+        try:
+            num1 = int(num1)
+            num2 = int(num2)
+        except:
+            num1 = ''
+            num2 = ''
+            msg = ''
+            ro = ''
+            resf = ''
+            resi = ''
+            cas = False
+            cas1 = False
+        else:
+            res = m_cm(num1,num2)
+            resf = res[0]
+            resi = res[1]
+            msg = res[2]
+            ro = res[3]
+            cas1 = res[4]
+            cas = res[4]
+    return render(request,'metercentimeter.html',{'cas':cas,'resf':resf,'resi':resi,'msg':msg,'ro':ro,'num1':num1,'num2':num2,'cas1':cas1})
 
+def nearest_meter(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        whole = ''
+        tens = ''
+        hund = ''
+        thou = ''
+        cas1 = False
+        placeten = ''
+        placehun = ''
+        placetho = ''
+        st = ''
+        st1 = ''
+        tensid = ''
+        sh = ''
+        sh1 = ''
+        hunid = ''
+        sth = ''
+        sth1 = ''
+        thouid = ''
+    else:
+        try:
+            num1 = float(num1)
+        except:
+            num1 = ''
+            cas = False
+            whole = ''
+            tens = ''
+            hund = ''
+            thou = ''
+            cas1 = False
+            placeten = ''
+            placehun = ''
+            placetho = ''
+            st = ''
+            st1 = ''
+            tensid = ''
+            sh = ''
+            sh1 = ''
+            hunid = ''
+            sth = ''
+            sth1 = ''
+            thouid = ''
+        else:
+            if num1.is_integer():
+                cas1 = False
+            else:
+                cas1 = True
+            rnth = h_3(num1)
+            rnh = h_2(num1)
+            rnt = h_1(num1)
+            placeten = 'ones'
+            placehun = 'tens'
+            placetho = 'hundred'
+            st = rnt[0]
+            st1 = rnt[1]
+            tensid = rnt[2]
+            sh = rnh[0]
+            sh1 = rnh[1]
+            hunid = rnh[2]
+            sth = rnth[0]
+            sth1 = rnth[1]
+            thouid = rnth[2]
+            res = nearfeet(num1)
+            whole = res[0]
+            tens = res[1]
+            hund = res[2]
+            thou = res[3]
+            cas = True
+    return render(request,'nearestmeter.html',{'num1':num1,'whole':whole,'tens':tens,'hund':hund,'thou':thou,'cas':cas,
+    'placeten':placeten,'placehun':placehun,'placetho':placetho,'st':st,'st1':st,'sh':sh,'sh1':sh1,
+    'sth':sth,'sth1':sth1,'tensid':tensid,'hunid':hunid,'thouid':thouid,'cas1':cas1})
 
+def centimeter_millimeter(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+    except:
+        num1 = ''
+        num2 = ''
+        msg = ''
+        ro = ''
+        resf = ''
+        resi = ''
+        cas = False
+        cas1 = False
+    else:
+        try:
+            num1 = int(num1)
+            num2 = int(num2)
+        except:
+            num1 = ''
+            num2 = ''
+            msg = ''
+            ro = ''
+            resf = ''
+            resi = ''
+            cas = False
+            cas1 = False
+        else:
+            res = cm_mm(num1,num2)
+            resf = res[0]
+            resi = res[1]
+            msg = res[2]
+            ro = res[3]
+            cas1 = res[4]
+            cas = res[4]
+    return render(request,'centimetermillimeter.html',{'cas':cas,'resf':resf,'resi':resi,'msg':msg,'ro':ro,'num1':num1,'num2':num2,'cas1':cas1})
 
+def nearest_centimeter(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        whole = ''
+        tens = ''
+        hund = ''
+        thou = ''
+        cas1 = False
+        placeten = ''
+        placehun = ''
+        placetho = ''
+        st = ''
+        st1 = ''
+        tensid = ''
+        sh = ''
+        sh1 = ''
+        hunid = ''
+        sth = ''
+        sth1 = ''
+        thouid = ''
+    else:
+        try:
+            num1 = float(num1)
+        except:
+            num1 = ''
+            cas = False
+            whole = ''
+            tens = ''
+            hund = ''
+            thou = ''
+            cas1 = False
+            placeten = ''
+            placehun = ''
+            placetho = ''
+            st = ''
+            st1 = ''
+            tensid = ''
+            sh = ''
+            sh1 = ''
+            hunid = ''
+            sth = ''
+            sth1 = ''
+            thouid = ''
+        else:
+            if num1.is_integer():
+                cas1 = False
+            else:
+                cas1 = True
+            rnth = h_3(num1)
+            rnh = h_2(num1)
+            rnt = h_1(num1)
+            placeten = 'ones'
+            placehun = 'tens'
+            placetho = 'hundred'
+            st = rnt[0]
+            st1 = rnt[1]
+            tensid = rnt[2]
+            sh = rnh[0]
+            sh1 = rnh[1]
+            hunid = rnh[2]
+            sth = rnth[0]
+            sth1 = rnth[1]
+            thouid = rnth[2]
+            res = nearfeet(num1)
+            whole = res[0]
+            tens = res[1]
+            hund = res[2]
+            thou = res[3]
+            cas = True
+    return render(request,'nearestcentimeter.html',{'num1':num1,'whole':whole,'tens':tens,'hund':hund,'thou':thou,'cas':cas,
+    'placeten':placeten,'placehun':placehun,'placetho':placetho,'st':st,'st1':st,'sh':sh,'sh1':sh1,
+    'sth':sth,'sth1':sth1,'tensid':tensid,'hunid':hunid,'thouid':thouid,'cas1':cas1})
 
+def kilometer_meter(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+    except:
+        num1 = ''
+        num2 = ''
+        msg = ''
+        ro = ''
+        resf = ''
+        resi = ''
+        cas = False
+        cas1 = False
+    else:
+        try:
+            num1 = int(num1)
+            num2 = int(num2)
+        except:
+            num1 = ''
+            num2 = ''
+            msg = ''
+            ro = ''
+            resf = ''
+            resi = ''
+            cas = False
+            cas1 = False
+        else:
+            res = km_m(num1,num2)
+            resf = res[0]
+            resi = res[1]
+            msg = res[2]
+            ro = res[3]
+            cas1 = res[4]
+            cas = res[4]
+    return render(request,'kilometermeter.html',{'cas':cas,'resf':resf,'resi':resi,'msg':msg,'ro':ro,'num1':num1,'num2':num2,'cas1':cas1})
 
+def nearest_kilometer(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        whole = ''
+        tens = ''
+        hund = ''
+        thou = ''
+        cas1 = False
+        placeten = ''
+        placehun = ''
+        placetho = ''
+        st = ''
+        st1 = ''
+        tensid = ''
+        sh = ''
+        sh1 = ''
+        hunid = ''
+        sth = ''
+        sth1 = ''
+        thouid = ''
+    else:
+        try:
+            num1 = float(num1)
+        except:
+            num1 = ''
+            cas = False
+            whole = ''
+            tens = ''
+            hund = ''
+            thou = ''
+            cas1 = False
+            placeten = ''
+            placehun = ''
+            placetho = ''
+            st = ''
+            st1 = ''
+            tensid = ''
+            sh = ''
+            sh1 = ''
+            hunid = ''
+            sth = ''
+            sth1 = ''
+            thouid = ''
+        else:
+            if num1.is_integer():
+                cas1 = False
+            else:
+                cas1 = True
+            rnth = h_3(num1)
+            rnh = h_2(num1)
+            rnt = h_1(num1)
+            placeten = 'ones'
+            placehun = 'tens'
+            placetho = 'hundred'
+            st = rnt[0]
+            st1 = rnt[1]
+            tensid = rnt[2]
+            sh = rnh[0]
+            sh1 = rnh[1]
+            hunid = rnh[2]
+            sth = rnth[0]
+            sth1 = rnth[1]
+            thouid = rnth[2]
+            res = nearfeet(num1)
+            whole = res[0]
+            tens = res[1]
+            hund = res[2]
+            thou = res[3]
+            cas = True
+    return render(request,'nearestkilometer.html',{'num1':num1,'whole':whole,'tens':tens,'hund':hund,'thou':thou,'cas':cas,
+    'placeten':placeten,'placehun':placehun,'placetho':placetho,'st':st,'st1':st,'sh':sh,'sh1':sh1,
+    'sth':sth,'sth1':sth1,'tensid':tensid,'hunid':hunid,'thouid':thouid,'cas1':cas1})
+def nearest_millimeter(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        whole = ''
+        tens = ''
+        hund = ''
+        thou = ''
+        cas1 = False
+        placeten = ''
+        placehun = ''
+        placetho = ''
+        st = ''
+        st1 = ''
+        tensid = ''
+        sh = ''
+        sh1 = ''
+        hunid = ''
+        sth = ''
+        sth1 = ''
+        thouid = ''
+    else:
+        try:
+            num1 = float(num1)
+        except:
+            num1 = ''
+            cas = False
+            whole = ''
+            tens = ''
+            hund = ''
+            thou = ''
+            cas1 = False
+            placeten = ''
+            placehun = ''
+            placetho = ''
+            st = ''
+            st1 = ''
+            tensid = ''
+            sh = ''
+            sh1 = ''
+            hunid = ''
+            sth = ''
+            sth1 = ''
+            thouid = ''
+        else:
+            if num1.is_integer():
+                cas1 = False
+            else:
+                cas1 = True
+            rnth = h_3(num1)
+            rnh = h_2(num1)
+            rnt = h_1(num1)
+            placeten = 'ones'
+            placehun = 'tens'
+            placetho = 'hundred'
+            st = rnt[0]
+            st1 = rnt[1]
+            tensid = rnt[2]
+            sh = rnh[0]
+            sh1 = rnh[1]
+            hunid = rnh[2]
+            sth = rnth[0]
+            sth1 = rnth[1]
+            thouid = rnth[2]
+            res = nearfeet(num1)
+            whole = res[0]
+            tens = res[1]
+            hund = res[2]
+            thou = res[3]
+            cas = True
+    return render(request,'nearestmillimeter.html',{'num1':num1,'whole':whole,'tens':tens,'hund':hund,'thou':thou,'cas':cas,
+    'placeten':placeten,'placehun':placehun,'placetho':placetho,'st':st,'st1':st,'sh':sh,'sh1':sh1,
+    'sth':sth,'sth1':sth1,'tensid':tensid,'hunid':hunid,'thouid':thouid,'cas1':cas1})
 
+def millimeter_micrometer(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+    except:
+        num1 = ''
+        num2 = ''
+        msg = ''
+        ro = ''
+        resf = ''
+        resi = ''
+        cas = False
+        cas1 = False
+    else:
+        try:
+            num1 = int(num1)
+            num2 = int(num2)
+        except:
+            num1 = ''
+            num2 = ''
+            msg = ''
+            ro = ''
+            resf = ''
+            resi = ''
+            cas = False
+            cas1 = False
+        else:
+            res = mm_mi(num1,num2)
+            resf = res[0]
+            resi = res[1]
+            msg = res[2]
+            ro = res[3]
+            cas1 = res[4]
+            cas = res[4]
+    return render(request,'millimetermicrometer.html',{'cas':cas,'resf':resf,'resi':resi,'msg':msg,'ro':ro,'num1':num1,'num2':num2,'cas1':cas1})
+def nearest_micrometer(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        whole = ''
+        tens = ''
+        hund = ''
+        thou = ''
+        cas1 = False
+        placeten = ''
+        placehun = ''
+        placetho = ''
+        st = ''
+        st1 = ''
+        tensid = ''
+        sh = ''
+        sh1 = ''
+        hunid = ''
+        sth = ''
+        sth1 = ''
+        thouid = ''
+    else:
+        try:
+            num1 = float(num1)
+        except:
+            num1 = ''
+            cas = False
+            whole = ''
+            tens = ''
+            hund = ''
+            thou = ''
+            cas1 = False
+            placeten = ''
+            placehun = ''
+            placetho = ''
+            st = ''
+            st1 = ''
+            tensid = ''
+            sh = ''
+            sh1 = ''
+            hunid = ''
+            sth = ''
+            sth1 = ''
+            thouid = ''
+        else:
+            if num1.is_integer():
+                cas1 = False
+            else:
+                cas1 = True
+            rnth = h_3(num1)
+            rnh = h_2(num1)
+            rnt = h_1(num1)
+            placeten = 'ones'
+            placehun = 'tens'
+            placetho = 'hundred'
+            st = rnt[0]
+            st1 = rnt[1]
+            tensid = rnt[2]
+            sh = rnh[0]
+            sh1 = rnh[1]
+            hunid = rnh[2]
+            sth = rnth[0]
+            sth1 = rnth[1]
+            thouid = rnth[2]
+            res = nearfeet(num1)
+            whole = res[0]
+            tens = res[1]
+            hund = res[2]
+            thou = res[3]
+            cas = True
+    return render(request,'nearestmicrometer.html',{'num1':num1,'whole':whole,'tens':tens,'hund':hund,'thou':thou,'cas':cas,
+    'placeten':placeten,'placehun':placehun,'placetho':placetho,'st':st,'st1':st,'sh':sh,'sh1':sh1,
+    'sth':sth,'sth1':sth1,'tensid':tensid,'hunid':hunid,'thouid':thouid,'cas1':cas1})
 
+def micrometer_nanometer(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+    except:
+        num1 = ''
+        num2 = ''
+        msg = ''
+        ro = ''
+        resf = ''
+        resi = ''
+        cas = False
+        cas1 = False
+    else:
+        try:
+            num1 = int(num1)
+            num2 = int(num2)
+        except:
+            num1 = ''
+            num2 = ''
+            msg = ''
+            ro = ''
+            resf = ''
+            resi = ''
+            cas = False
+            cas1 = False
+        else:
+            res = mm_mi(num1,num2)
+            resf = res[0]
+            resi = res[1]
+            msg = res[2]
+            ro = res[3]
+            cas1 = res[4]
+            cas = res[4]
+    return render(request,'micrometernanometer.html',{'cas':cas,'resf':resf,'resi':resi,'msg':msg,'ro':ro,'num1':num1,'num2':num2,'cas1':cas1})
 
-
-
-
-
-        
-
-
+def nearest_nanometer(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        whole = ''
+        tens = ''
+        hund = ''
+        thou = ''
+        cas1 = False
+        placeten = ''
+        placehun = ''
+        placetho = ''
+        st = ''
+        st1 = ''
+        tensid = ''
+        sh = ''
+        sh1 = ''
+        hunid = ''
+        sth = ''
+        sth1 = ''
+        thouid = ''
+    else:
+        try:
+            num1 = float(num1)
+        except:
+            num1 = ''
+            cas = False
+            whole = ''
+            tens = ''
+            hund = ''
+            thou = ''
+            cas1 = False
+            placeten = ''
+            placehun = ''
+            placetho = ''
+            st = ''
+            st1 = ''
+            tensid = ''
+            sh = ''
+            sh1 = ''
+            hunid = ''
+            sth = ''
+            sth1 = ''
+            thouid = ''
+        else:
+            if num1.is_integer():
+                cas1 = False
+            else:
+                cas1 = True
+            rnth = h_3(num1)
+            rnh = h_2(num1)
+            rnt = h_1(num1)
+            placeten = 'ones'
+            placehun = 'tens'
+            placetho = 'hundred'
+            st = rnt[0]
+            st1 = rnt[1]
+            tensid = rnt[2]
+            sh = rnh[0]
+            sh1 = rnh[1]
+            hunid = rnh[2]
+            sth = rnth[0]
+            sth1 = rnth[1]
+            thouid = rnth[2]
+            res = nearfeet(num1)
+            whole = res[0]
+            tens = res[1]
+            hund = res[2]
+            thou = res[3]
+            cas = True
+    return render(request,'nearestnanometer.html',{'num1':num1,'whole':whole,'tens':tens,'hund':hund,'thou':thou,'cas':cas,
+    'placeten':placeten,'placehun':placehun,'placetho':placetho,'st':st,'st1':st,'sh':sh,'sh1':sh1,
+    'sth':sth,'sth1':sth1,'tensid':tensid,'hunid':hunid,'thouid':thouid,'cas1':cas1})
+def nearest_yard(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        whole = ''
+        tens = ''
+        hund = ''
+        thou = ''
+        cas1 = False
+        placeten = ''
+        placehun = ''
+        placetho = ''
+        st = ''
+        st1 = ''
+        tensid = ''
+        sh = ''
+        sh1 = ''
+        hunid = ''
+        sth = ''
+        sth1 = ''
+        thouid = ''
+    else:
+        try:
+            num1 = float(num1)
+        except:
+            num1 = ''
+            cas = False
+            whole = ''
+            tens = ''
+            hund = ''
+            thou = ''
+            cas1 = False
+            placeten = ''
+            placehun = ''
+            placetho = ''
+            st = ''
+            st1 = ''
+            tensid = ''
+            sh = ''
+            sh1 = ''
+            hunid = ''
+            sth = ''
+            sth1 = ''
+            thouid = ''
+        else:
+            if num1.is_integer():
+                cas1 = False
+            else:
+                cas1 = True
+            rnth = h_3(num1)
+            rnh = h_2(num1)
+            rnt = h_1(num1)
+            placeten = 'ones'
+            placehun = 'tens'
+            placetho = 'hundred'
+            st = rnt[0]
+            st1 = rnt[1]
+            tensid = rnt[2]
+            sh = rnh[0]
+            sh1 = rnh[1]
+            hunid = rnh[2]
+            sth = rnth[0]
+            sth1 = rnth[1]
+            thouid = rnth[2]
+            res = nearfeet(num1)
+            whole = res[0]
+            tens = res[1]
+            hund = res[2]
+            thou = res[3]
+            cas = True
+    return render(request,'nearestyard.html',{'num1':num1,'whole':whole,'tens':tens,'hund':hund,'thou':thou,'cas':cas,
+    'placeten':placeten,'placehun':placehun,'placetho':placetho,'st':st,'st1':st,'sh':sh,'sh1':sh1,
+    'sth':sth,'sth1':sth1,'tensid':tensid,'hunid':hunid,'thouid':thouid,'cas1':cas1})
+def nearest_mile(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        whole = ''
+        tens = ''
+        hund = ''
+        thou = ''
+        cas1 = False
+        placeten = ''
+        placehun = ''
+        placetho = ''
+        st = ''
+        st1 = ''
+        tensid = ''
+        sh = ''
+        sh1 = ''
+        hunid = ''
+        sth = ''
+        sth1 = ''
+        thouid = ''
+    else:
+        try:
+            num1 = float(num1)
+        except:
+            num1 = ''
+            cas = False
+            whole = ''
+            tens = ''
+            hund = ''
+            thou = ''
+            cas1 = False
+            placeten = ''
+            placehun = ''
+            placetho = ''
+            st = ''
+            st1 = ''
+            tensid = ''
+            sh = ''
+            sh1 = ''
+            hunid = ''
+            sth = ''
+            sth1 = ''
+            thouid = ''
+        else:
+            if num1.is_integer():
+                cas1 = False
+            else:
+                cas1 = True
+            rnth = h_3(num1)
+            rnh = h_2(num1)
+            rnt = h_1(num1)
+            placeten = 'ones'
+            placehun = 'tens'
+            placetho = 'hundred'
+            st = rnt[0]
+            st1 = rnt[1]
+            tensid = rnt[2]
+            sh = rnh[0]
+            sh1 = rnh[1]
+            hunid = rnh[2]
+            sth = rnth[0]
+            sth1 = rnth[1]
+            thouid = rnth[2]
+            res = nearfeet(num1)
+            whole = res[0]
+            tens = res[1]
+            hund = res[2]
+            thou = res[3]
+            cas = True
+    return render(request,'nearestmile.html',{'num1':num1,'whole':whole,'tens':tens,'hund':hund,'thou':thou,'cas':cas,
+    'placeten':placeten,'placehun':placehun,'placetho':placetho,'st':st,'st1':st,'sh':sh,'sh1':sh1,
+    'sth':sth,'sth1':sth1,'tensid':tensid,'hunid':hunid,'thouid':thouid,'cas1':cas1})
