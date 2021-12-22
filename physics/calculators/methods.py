@@ -1111,9 +1111,9 @@ def roundit(x, sig):
     return round(x, sig-int(floor(log10(abs(x))))-1)
 
 def min_15_round(n1,n2):
-    if n2 in ('0','1','2','3','4','5','6','7'):
+    if n2 in ('00','01','02','03','04','05','06','07'):
         return n1+':'+'00'
-    elif  n2 in ('8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22'):
+    elif  n2 in ('08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22'):
         return n1+':'+'15'
     elif n2 in ('23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37'):
         return n1+':'+'30'
@@ -1124,6 +1124,8 @@ def min_15_round(n1,n2):
             return '00'+':'+'00'
         else:
             return str(int(n1)+1)+':'+'00'
+    else:
+        return 'No'
 
 def roundeighth(num1):
     return ceil(num1*8)/8
@@ -1232,14 +1234,14 @@ def h_1(num1):
     res1 = round(Decimal(num1),-1)
     if tens>5:
         st = 'which is greater than 5'
-        st1 = 'So round up the number'
+        stp = 'So round up the number'
     elif tens==5:
         st = 'which is equal to 5'
-        st1 = 'So, round up the number'
+        stp = 'So, round up the number'
     else:
         st = 'which is less than 5'
-        st1 = 'So, round down the number'
-    return [st,st1,tens]
+        stp = 'So, round down the number'
+    return [st,stp,tens]
 
 def m_cm(f,i):
     if i >50 and i<=100:
