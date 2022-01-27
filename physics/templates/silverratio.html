@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+{%load static%}
+{%block meta%}
+<!-- HTML Defaults Broweser -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap Stylesheet and Jquery, Google APIS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Online Calculator Guru Site Fevicon -->
+<link rel="shortcut icon" href="https://onlinecalculator.guru/static/images/logo/Online-Calculator-Guru-Fevicon.png"
+    type="icon">
+
+<!-- Online Calculator Guru Project Style Sheet -->
+{%block css%}
+<link rel="stylesheet" href="https://onlinecalculator.guru/static/style.css">
+{%endblock%}
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Meta Title, Description and Canonical URL Starts --->
+<title>    Silver Ratio Calculator | Free Calculator to Find Silver Ratio </title>
+<meta name="description"
+    content="    Friction Loss Calculator makes it easy for you to find   Friction Loss ." />
+<link rel="canonical" href="{{request.build_absolute_uri}}">
+<!-- Meta Title, Description and Canonical URL ENDS --->
+
+<!-- OPEN GRAPH CONFIGURATIONS STARTS -->
+<!--  FACEBOOK CONFIGURATION STARTS  -->
+<meta content="https://www.facebook.com/OnlineCalculator-Guru-131572098650589/" property="og:url" />
+<meta property="og:title" content=" Friction Loss Calculator | Free Calculator to find     Friction Loss" />
+<meta property="og:description" content="    Friction Loss Calculator" />
+<meta content="" property="og:site_name" />
+    
+<meta content="https://onlinecalculator.guru/static/images/Chemistry/Friction-Loss-Calculator.jpeg"
+    property="og:image" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:height" content="435" />
+<meta property="og:image:width" content="354" />
+<!--  FACEBOOK CONFIGURATION ENDS  -->
+<!-- TWITTER CARD CONFIGURATION STARTS  -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="https://twitter.com/onlinecalculator" />
+<meta name="twitter:title" content="    Friction Loss Calculator | Free Calculator to find     Friction Loss" />
+<meta name="twitter:description"
+    content="Ohm's law Calculator" />
+<meta name="twitter:image:src"
+    content="https://onlinecalculator.guru/static/images/Chemistry/Friction-Loss-Calculator.jpeg" />
+<meta property="twitter:image:height" content="435" />
+<meta property="twitter:image:width" content="354" />
+<!-- TWITTER CARD CONFIGURATION ENDS  -->
+<!--  LINKEDIN CONFIGURATION STARTS-->
+<tittle> Silver Ratio Calculator</tittle>
+<meta property='og:title' content="    Friction Loss Calculator |     Friction Loss" />
+<meta property='og:image'
+    content="https://onlinecalculator.guru/static/images/Chemistry/Friction-Loss-Calculator.jpeg" />
+<meta property='og:description' content="Ohm's law Calculator." />
+<meta property='og:url' content="https://www.linkedin.com/in/onlinecalculator/" />
+<!-- end of linkedin CONFIGURATIONS ENDS -->
+<!-- OPEN GRAPH CONFIGURATION ENDS -->
+<!-- FAQ SCHEMA STARTS -->
+
+{%endblock%}
+{% block content %}
+
+<style>
+    input {
+        text-align: right;
+    }
+    span.frac {
+      display: inline-block;
+      font-size: 50%;
+      text-align: center;
+    }
+    span.frac > sup {
+      display: block;
+      border-bottom: 1px solid;
+      font: inherit;
+    }
+    span.frac > span {
+      display: none;
+    }
+    span.frac > sub {
+      display: block;
+      font: inherit;
+    }
+</style>
+<br>
+<br>
+<br>
+<body>
+	<script>
+		function Clean(){
+            document.getElementById('cards').innerHTML=''
+            document.getElementById('cards1').innerHTML=''
+		}
+        function handleSubmit(event) {
+            if(!validate()) {
+                event.preventDefault();
+            }
+            return;
+        }
+        function ClearFields() {
+            document.getElementById("Ib").value = "";
+            document.getElementById("Ib1").value = "";
+			
+        }
+	</script>
+	<div class = "container">
+	<div class="card">
+		<h1 class="card-header" style="background-color:#00BFFF;color: white;">Silver Ratio Calculator</h1>
+		<div class="card-body">
+                <form  method = "POST" onsubmit="handleSubmit();">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-4">
+                        </div>
+                        <div class="col-sm-4">
+                          <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Length</h5>
+                                <input type="number" step = "any"  id="Ib" class="form-control mt-1" name="num1" value="{{num1}}">
+                                <h5 class="card-title">Breadth</h5>
+                                <input type="number" step = "any"  id="Ib1" class="form-control mt-1" name="num2" value="{{num2}}">
+
+                                <div class="center col mt-2">
+                                    <center>
+                                    <input type="submit" class="btn btn-primary" value="Calculate" onclick="myFunction();Clean();">
+                                    <input type="button" class="btn btn-danger" onclick="ClearFields();Clean();ClearFields();" value="Reset" style="margin-top: 5px;">
+                                    </center>
+                                </div>
+                          </div>
+                        </div>
+                    </div>
+                    {%if mcas%}
+                        <div class = "container" id = "cards">
+                            <center><p>{{msg}}</p></center>
+                        </div>
+                        {%endif%}
+                  </div>
+                  
+            </form>
+        </div>
+        </div>
+    </div>
+                        {%if cas %}
+                        <div class = "container" id = "cards">
+                        <div class="card">
+                            <h1 class="card-header" style="background-color:#00BFFF;color: white;">{{ukdim}} for given {{kdim}} {{given}} is</h1>
+                            <div class="card-body">
+                                <p>{{ukdim}} = {{res}}</p>
+                            </div>
+                        </div>
+                        </div>
+                    {% endif%}
+                    {%if cas %}
+	<div class = "container" id = "cards1">
+    <div class="card">
+        <h1 class="card-header" style="background-color:#00BFFF;color: white;">Steps to Find {{ukdim}} when {{kdim}} is given</h1>
+        <div class="card-body">
+            <p>Given Dimmension, {{kdim}} = {{given}}</p>
+            <p>The Silver Ratio is given by</p>
+            <p><h1><span class="frac"><sup>Length</sup><span>/</span><sub>Breadth</sub></span> = <span class="frac"><sup>1</sup><span>/</span><sub>2.41421356</sub></span></h1></p>
+            <p>Substiute the given {{kdim}} {{given}} in the above formula</p>
+            <p>We get, {{ukdim}} = {{res}}
+            </p>
+            </div>
+            </div>
+            </div>
+            {% endif %}
+    <script>
+        var scrollDiv = document.getElementById("cards").offsetTop;
+        window.scrollTo({ top: scrollDiv, behavior: 'smooth' });
+        
+            function myFunction() {
+                document.getElementById("cards").innerHTML = "";
+        
+            }
+        </script>
+        </body>
+{%endblock%}

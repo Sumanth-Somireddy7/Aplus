@@ -4249,3 +4249,337 @@ def time_clock_30_minutes(request):
             msg = ''
             mcas = True
     return render(request,'time30minutes.html',{'final':final,'cas':cas,'min':minu,'scas':scas,'num1':num1,'msg':msg,'mcas':mcas})
+
+def sinx(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        res = ''
+    else:
+        res = sine(float(num1))
+        cas = True
+    return render(request,'sine.html',{'num1':num1,'cas':cas,'res':res})
+
+def cosx(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        res = ''
+    else:
+        res = cosine(float(num1))
+        cas = True
+    return render(request,'cosine.html',{'num1':num1,'cas':cas,'res':res})
+
+def tanx(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        res = ''
+    else:
+        res = tangent(float(num1))
+        cas = True
+    return render(request,'tangent.html',{'num1':num1,'cas':cas,'res':res})
+
+def arcsinx(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        res = ''
+    else:
+        res = arcsine(float(num1))
+        cas = True
+    return render(request,'arcsine.html',{'num1':num1,'cas':cas,'res':res})
+
+def arctanx(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        res = ''
+    else:
+        res = arctangent(float(num1))
+        cas = True
+    return render(request,'arctan.html',{'num1':num1,'cas':cas,'res':res})
+
+def secx(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        res = ''
+    else:
+        res = secant(float(num1))
+        cas = True
+    return render(request,'secant.html',{'num1':num1,'cas':cas,'res':res})
+
+def radian_to_degree(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        res = ''
+    else:
+        res = rad2deg(float(num1))
+        cas = True
+    return render(request,'radtodegree.html',{'num1':num1,'cas':cas,'res':res})
+
+def degree_to_radian(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        res = ''
+    else:
+        res = deg2rad(float(num1))
+        cas = True
+    return render(request,'degreetorad.html',{'num1':num1,'cas':cas,'res':res})
+
+def rpm_to_radianspersecond(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        res = ''
+    else:
+        res = rpm2rad(float(num1))
+        cas = True
+    return render(request,'rpmtorad.html',{'num1':num1,'cas':cas,'res':res})
+
+def trig_functions_right_triangle(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+        num3 = request.POST['num3']
+    except:
+        num1 = ''
+        num2 = ''
+        num3 = ''
+        cas = False
+    else:
+        cas = True
+    return render(request,'trigtriangle.html',{'num1':num1,'num2':num2,'num3':num3,'cas':cas})
+
+def simplify_trigonometric_expressions(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        res = ''
+    else:
+        res = trigexp(num1)
+        cas = True
+    return render(request,'trigsimplify.html',{'num1':num1,'cas':cas,'res':res})
+def find_quadrant_of_angle(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+        res = ''
+        rem = ''
+        angle = ''
+        ires = ''
+    else:
+        resset = anglequad(float(num1))
+        res = resset[0]
+        cas = True
+        rem = resset[1]
+        ires = rem+1
+        angle = resset[2]
+    return render(request,'findquadrant.html',{'num1':num1,'cas':cas,'res':res,'rem':rem,'angle':angle,'ires':ires})
+
+def trig_value_of_angle(request):
+    try:
+        num1 = request.POST['num1']
+        unit = request.POST['unit']
+        num1 = float(num1)
+    except:
+        num1 = ''
+        ud = False
+        ur = False
+        sine = ''
+        cosine = ''
+        tan = ''
+        cosecant = ''
+        sec = ''
+        cot = ''
+        rad = ''
+    else:
+        if unit == 'rad':
+            res = trigangle(num1)
+            ur = True
+            ud = False
+            sine = res[0]
+            cosine = res[1]
+            tan = res[2]
+            cosecant = res[3]
+            sec = res[4]
+            cot = res[5]
+            rad = ''
+        else:
+            rad = num1*0.0174533
+            res = trigangle(rad)
+            ud = True
+            ur = False
+            sine = res[0]
+            cosine = res[1]
+            tan = res[2]
+            cosecant = res[3]
+            sec = res[4]
+            cot = res[5]
+    return render(request,'trigvalue.html',{'num1':num1,'sine':sine,'cosine':cosine,'tan':tan,'cosecant':cosecant,'sec':sec,'cot':cot,'ud':ud,'ur':ur,'rad':rad})
+
+def de_moivre(request):
+    try:
+        num1 = request.POST['num1']
+    except:
+        num1 = ''
+        cas = False
+    else:
+        cas = True
+    return render(request,'demoivres.html',{'num1':num1,'cas':cas})
+
+def golden_ratio(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+        num3 = request.POST['num3']
+    except:
+        num1 = ''
+        num2 = ''
+        num3 = ''
+        cas = False
+        cas1 = False
+        res = ''
+        conlynum1 = False
+        conlynum2 = False
+        conlynum3 = False
+        cbothnum1andnum2 = False
+    else:
+        if num2 == '' and num3 == '':
+            num1 = float(num1)
+            res = grationum1only(num1)
+            num2 = res[0]
+            num3 = res[1]
+            conlynum1 = res[2]
+            conlynum2 = False
+            conlynum3 = False
+            cbothnum1andnum2 = False
+            cas = True
+            cas1 = False
+        elif num1 == '' and num3 == '':
+            num2 = float(num2)
+            res = grationum2only(num2)
+            num1 = res[0]
+            num3 = res[1]
+            conlynum2 = res[2]
+            conlynum1 = False
+            conlynum3 = False
+            cbothnum1andnum2 = False
+            cas = True
+            cas1 = False
+        elif num1=='' and num2 == '':
+            num3 = float(num3)
+            res = grationum3only(num3)
+            num1 = res[0]
+            num2 = res[1]
+            conlynum3 = res[2]
+            conlynum1 = False
+            conlynum2 = False
+            cbothnum1andnum2 = False
+            cas = True
+            cas1 = False
+        else:
+            cas1 = True
+            cas = False
+            cbothnum1andnum2 = False
+            conlynum1 = False
+            conlynum2 = False
+            conlynum3 = False
+    return render(request,'goldenratio.html',{'num1':num1,'num2':num2,'cas':cas,'num3':num3,'conlynum1':conlynum1,'conlynum2':conlynum2,'conlynum3':conlynum3,'cas1':cas1})
+
+def silver_ratio(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+    except:
+        cas = False
+        num1 = ''
+        num2 = ''
+        kdim = ''
+        ukdim = ''
+        given = ''
+        res = ''
+        mcas = False
+        msg = ''
+    else:
+        if num1 == '':
+            resmethod = breadthratio(float(num2))
+            cas = True
+            mcas = False
+            given = num2
+            res = resmethod[0]
+            kdim = resmethod[1]
+            ukdim = resmethod[2]
+            msg = ''
+        elif num2 == '':
+            resmethod = lengthratio(float(num1))
+            cas = True
+            mcas = False
+            given = num1
+            res = resmethod[0]
+            kdim = resmethod[1]
+            ukdim = resmethod[2]
+            msg = ''
+        else:
+            cas = False
+            num1 = ''
+            num2 = ''
+            kdim = ''
+            ukdim = ''
+            given = ''
+            res = ''
+            mcas = True
+            msg = 'Enter either only length or breadth'
+    return render(request,'silverratio.html',{'cas':cas,'given':given,'res':res,'kdim':kdim,'ukdim':ukdim,'num1':num1,'num2':num2,'mcas':mcas,'msg':msg})
+
+def tree_age(request):
+    try:
+        num1 = request.POST['num1']
+        growthfactor = request.POST['growthfactor']
+    except:
+        num1 = ''
+        cas = False
+        res = ''
+        growthfactor = ''
+        age = ''
+        diameter = ''
+
+    else:
+        res = treeage(float(num1), float(growthfactor))
+        diameter = res[0]
+        age = res[1]
+        cas = True
+    return render(request,'treeage.html',{'num1':num1,'growthfactor':growthfactor,'cas':cas,'diameter':diameter,'age':age})
+
+
+
+
+
+
+        
+

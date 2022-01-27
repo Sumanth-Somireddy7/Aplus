@@ -40,6 +40,22 @@ urlpatterns = [
     path('nearest_nanometer/',views.nearest_nanometer,name = 'nearest_nanometer'),
     path('nearest_yard/',views.nearest_yard,name = 'nearest_yard'),
     path('nearest_mile/',views.nearest_mile,name = 'nearest_mile'),
-    path('time_clock_30_minutes/',views.time_clock_30_minutes,name = 'time_clock_30_minutes')
-
+    path('time_clock_30_minutes/',views.time_clock_30_minutes,name = 'time_clock_30_minutes'),
+    path('sinx/',views.sinx,name = 'sinx'),
+    path('cosx/',views.cosx,name = 'cosx'),
+    path('tanx/',views.tanx,name = 'tanx'),
+    path('arcsinx/',views.arcsinx,name = 'arcsinx'),
+    path('arctanx/',views.arctanx,name = 'arctanx'),
+    path('secx/',views.secx,name = 'secx'),
+    path('radian_to_degree/',views.radian_to_degree,name = 'radian_to_degree'),
+    path('degree_to_radian/',views.degree_to_radian,name = 'degree_to_radian'),
+    path('rpm_to_radianspersecond/',views.rpm_to_radianspersecond,name = 'rpm_to_radianspersecond'),
+    path('trig_functions_right_triangle/',views.trig_functions_right_triangle,name = 'trig_functions_right_triangle'),
+    path('simplify_trigonometric_expressions/',views.simplify_trigonometric_expressions, name = 'simplify_trigonometric_expressions'),
+    path('find_quadrant_of_angle/',views.find_quadrant_of_angle, name = 'find_quadrant_of_angle'),
+    path('trig_value_of_angle/',views.trig_value_of_angle, name = 'trig_value_of_angle'),
+    path('de_moivre/',views.de_moivre, name = 'de_moivre'),
+    path('golden_ratio/',views.golden_ratio,name = 'golden_ratio'),
+    path('silver_ratio/',views.silver_ratio,name = 'silver_ratio'),
+    path('tree-age/',views.tree_age,name = 'tree_age')
 ]

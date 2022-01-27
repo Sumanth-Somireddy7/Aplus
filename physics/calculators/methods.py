@@ -1,6 +1,7 @@
-from math import sqrt,log10,floor,ceil,gcd
+from math import sqrt,log10,floor,ceil,gcd,sin,cos,tan,asin,atan
 from decimal import *
-import numpy as np
+from sympy import sec,trigsimp
+from numpy import arcsin,arccos,arctan
 
 def get_pos_nums(num):
     pos_nums = []
@@ -1392,3 +1393,90 @@ def min_30_round(n1,n2):
             return str(int(n1)+1)+':'+'00'
     else:
         return 'No'
+
+def sine(n):
+    return sin(n)
+def cosine(n):
+    return cos(n)
+def secant(n):
+    return sec(n)
+
+def tangent(n):
+    return tan(n)
+
+def arcsine(n):
+    return asin(n)
+def arctangent(n):
+    return atan(n)
+def rad2deg(n):
+    return n*57.2958
+def deg2rad(n):
+    return n*0.0174533
+def rpm2rad(n):
+    return n*0.10472
+def trigexp(n):
+    return trigsimp(n)
+def anglequad(n):
+    angle = n
+    basis = angle
+    angle %= 360.0
+    if (angle < 0):
+        angle += 360.0;
+    rem = int((angle/90)%4)
+    quadrant = int((angle/90) % 4 + 1)
+    quadrantList = ["I", "II", "III", "IV"]
+    res = quadrantList[quadrant-1]
+    return [res,rem,angle]
+
+def trigangle(n):
+    return [sin(n),cos(n),tan(n),1/sin(n),1/cos(n),1/tan(n)]
+
+def grationum1only(n1):
+    conlynum1 = True
+    phi = 1.618033
+    a = n1
+    aplusb = phi*a
+    b = aplusb-a
+    return [b,aplusb,conlynum1]
+def grationum2only(n2):
+    conlynum2 = True
+    phi = 1.618033
+    b = n2
+    a = phi*b
+    aplusb = a+b
+    return [a,aplusb,conlynum2]
+def grationum3only(n3):
+    conlynum3 = True
+    phi = 1.618033
+    aplusb = n3
+    a = aplusb/phi
+    b = a/phi
+    return [a,b,conlynum3]
+
+def grationum1andnum2(n1,n2):
+    phi = 1.618033
+    a = n1
+    b = n2
+    aplusb = n1/n2
+    if aplus==phi:
+        cbothnum1andnum2 = True
+    return [aplusb,cbothnum1andnum2]
+
+def breadthratio(breadth):
+    ans = (1/2.41421356)*breadth
+    kdim = 'Breadth'
+    ukdim = 'Length'
+    return [ans,kdim,ukdim]
+
+def lengthratio(length):
+    ans = length*2.41421356
+    kdim = 'Length'
+    ukdim = 'Breadth'
+    return [ans,kdim,ukdim]
+def treeage(n,gf):
+    diameter = n/3.141592
+    age = diameter*gf
+    return [diameter,age]
+
+    
+
