@@ -4576,6 +4576,79 @@ def tree_age(request):
         cas = True
     return render(request,'treeage.html',{'num1':num1,'growthfactor':growthfactor,'cas':cas,'diameter':diameter,'age':age})
 
+def rule_of_72(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+    except:
+        num1 = ''
+        num2 = ''
+        mcas = False
+        cas = False
+        res = ''
+        given = ''
+        unit = ''
+        gnum = ''
+        uk = ''
+        uunit = ''
+    else:
+        if num1=='':
+            res = rule72rate(float(num2))
+            cas = True
+            mcas = False
+            given = 'Number of years'
+            unit = 'years'
+            gnum = num2
+            uk = 'Rate of Interest'
+            uunit = '%'
+        elif num2=='':
+            res = rule72years(float(num1))
+            cas = True
+            mcas = False
+            given = 'Rate of Interest'
+            unit = '%'
+            gnum = num1
+            uk = 'Number of years'
+            uunit = 'years'
+        else:
+            mcas = True
+            cas = False
+            res = ''
+            given = ''
+            gnum = ''
+            uk = ''
+            unit = ''
+            uunit = ''
+    return render(request,'ruleof72.html',{'res':res,'gnum':gnum,'cas':cas,'mcas':mcas,'uk':uk,'given':given,'unit':unit,'uunit':uunit,'num1':num1,'num2':num2})
+
+def savings_goal(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+        num3 = request.POST['num3']
+        num4 = request.POST['num4']
+    except:
+        num1 = ''
+        num2 = ''
+        num3 = ''
+        num4 = ''
+        cas = False
+        resmonthly = ''
+        resdaily = ''
+        r = ''
+    else:
+        g = float(num1)
+        y = int(num2)
+        r = float(float(num3)/100)
+        p = float(num4)
+        resmonthly = savingsgoal(g,y,r,p)
+        resdaily = (resmonthly*12)/365
+        cas = True
+    return render(request,'savingsgoal.html',{'num1':num1,'num2':num2,'num3':num3,'num4':num4,'resmonthly':resmonthly,'cas':cas,'resdaily':resdaily,'r':r})
+
+
+
+
 
 
 

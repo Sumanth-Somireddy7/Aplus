@@ -57,5 +57,7 @@ urlpatterns = [
     path('de_moivre/',views.de_moivre, name = 'de_moivre'),
     path('golden_ratio/',views.golden_ratio,name = 'golden_ratio'),
     path('silver_ratio/',views.silver_ratio,name = 'silver_ratio'),
-    path('tree-age/',views.tree_age,name = 'tree_age')
+    path('tree-age/',views.tree_age,name = 'tree_age'),
+    path('rule-of-72/',views.rule_of_72,name = 'rule_of_72'),
+    path('savings-goal/',views.savings_goal,name = 'savings_goal')
 ]

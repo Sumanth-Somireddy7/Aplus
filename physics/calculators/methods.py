@@ -1477,6 +1477,15 @@ def treeage(n,gf):
     diameter = n/3.141592
     age = diameter*gf
     return [diameter,age]
-
+def rule72rate(num2):
+    #r*t=72
+    return float(72/num2)
+def rule72years(num1):
+    return float(72/num1)
+def savingsgoal(g,y,r,p):
+    numerator = (r/12)*(g-p*(1+(r/12))**(y*12))
+    denominator = ((1+(r/12))**(y*12))-1
+    res = numerator/denominator
+    return res
     
 
