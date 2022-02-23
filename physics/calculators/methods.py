@@ -1,4 +1,4 @@
-from math import sqrt,log10,floor,ceil,gcd,sin,cos,tan,asin,atan
+from math import sqrt,log10,floor,ceil,gcd,sin,cos,tan,asin,atan,pi
 from decimal import *
 from sympy import sec,trigsimp
 from numpy import arcsin,arccos,arctan
@@ -1487,5 +1487,19 @@ def savingsgoal(g,y,r,p):
     denominator = ((1+(r/12))**(y*12))-1
     res = numerator/denominator
     return res
+
+def annuity(PA,n,i,t):
+    #P Ordinary * [1 – (1 + r)-n] / [(1 + r)t * r]
+    a = (1+i)**(-n)
+    b = (1+i)**t
+    FV = PA *((1-a)/(b*i)) 
+    return FV
+def tankvol(diameter,height,given_data):
+    if given_data=='vc':
+        res = pi*((diameter/2)**2)*height
+    if given_data=='hc':
+        res = pi*((diameter/2)**2)*height
+    return res
+
     
 

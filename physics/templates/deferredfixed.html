@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {%load static%}
 {%block meta%}
 <!-- HTML Defaults Broweser -->
@@ -21,7 +22,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <!-- Meta Title, Description and Canonical URL Starts --->
-<title>    Silver Ratio Calculator | Free Calculator to Find Silver Ratio </title>
+<title>    Deferred Fixed Annuity Calculator | Free Calculator to Find Deferred Fixed Annuity </title>
 <meta name="description"
     content="    Friction Loss Calculator makes it easy for you to find   Friction Loss ." />
 <link rel="canonical" href="{{request.build_absolute_uri}}">
@@ -52,7 +53,7 @@
 <meta property="twitter:image:width" content="354" />
 <!-- TWITTER CARD CONFIGURATION ENDS  -->
 <!--  LINKEDIN CONFIGURATION STARTS-->
-<tittle> Silver Ratio Calculator</tittle>
+<tittle> Deferred Fixed Annuity Calculator</tittle>
 <meta property='og:title' content="    Friction Loss Calculator |     Friction Loss" />
 <meta property='og:image'
     content="https://onlinecalculator.guru/static/images/Chemistry/Friction-Loss-Calculator.jpeg" />
@@ -68,23 +69,6 @@
 <style>
     input {
         text-align: right;
-    }
-    span.frac {
-      display: inline-block;
-      font-size: 50%;
-      text-align: center;
-    }
-    span.frac > sup {
-      display: block;
-      border-bottom: 1px solid;
-      font: inherit;
-    }
-    span.frac > span {
-      display: none;
-    }
-    span.frac > sub {
-      display: block;
-      font: inherit;
     }
 </style>
 <br>
@@ -103,69 +87,89 @@
             return;
         }
         function ClearFields() {
-            document.getElementById("Ib").value = "";
             document.getElementById("Ib1").value = "";
+            document.getElementById("Ib2").value = "";
+            document.getElementById("Ib3").value = "";
+            document.getElementById("Ib4").value = "";
 			
         }
 	</script>
-	<div class = "container">
-	<div class="card">
-		<h1 class="card-header" style="background-color:#00BFFF;color: white;">Silver Ratio Calculator</h1>
-		<div class="card-body">
-                <form  method = "POST" onsubmit="handleSubmit();">
+	<div class="container">
+        <div class="card">
+            <h1 class="card-header" style="background-color:#00BFFF;color: white;">Deferred Fixed Annuity Calculator</h1>
+            <div class="card-body">
+                <form method="POST" onsubmit="handleSubmit();">
                     {% csrf_token %}
-                    <div class="row">
-                        <div class="col-sm-4">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><strong>Annuity Payment</strong></div>
                         </div>
-                        <div class="col-sm-4">
-                          <div class="card">
-                            <div class="card-body">
-                              <h5 class="card-title">Length</h5>
-                                <input type="number" step = "any"  id="Ib" class="form-control mt-1" name="num1" value="{{num1}}" placeholder="10">
-                                <h5 class="card-title">Breadth</h5>
-                                <input type="number" step = "any"  id="Ib1" class="form-control mt-1" name="num2" value="{{num2}}" placeholder="15.5">
-
-                                <div class="center col mt-2">
-                                    <center>
-                                    <input type="submit" class="btn btn-primary" value="Calculate" onclick="myFunction();Clean();">
-                                    <input type="button" class="btn btn-danger" onclick="ClearFields();Clean();ClearFields();" value="Reset" style="margin-top: 5px;">
-                                    </center>
-                                </div>
-                          </div>
+                        <input type="number" step = "any"  id="Ib1"   class="form-control mt-1" name="num1" value = "{{num1}}" placeholder="10000" required >
                         </div>
-                    </div>
-                    {%if mcas%}
-                        <div class = "container" id = "cards">
-                            <center><p>{{msg}}</p></center>
-                        </div>
-                        {%endif%}
-                  </div>
-                  
-            </form>
-        </div>
-        </div>
-    </div>
-                        {%if cas %}
-                        <div class = "container" id = "cards">
-                        <div class="card">
-                            <h1 class="card-header" style="background-color:#00BFFF;color: white;">{{ukdim}} for given {{kdim}} {{given}} is</h1>
-                            <div class="card-body">
-                                <p>{{ukdim}} = {{res}}</p>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><strong>Total Number of Years of Contract</strong></div>
                             </div>
-                        </div>
-                        </div>
-                    {% endif%}
-                    {%if cas %}
+                            <input type="number" id="Ib2"   class="form-control mt-1" name="num2" value = "{{num2}}" placeholder="10" required >
+                            <div class="input-group-text"><strong>years</strong></div>
+                            </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><strong>Annual Interest Rate</strong></div>
+                                </div>
+                                <input type="number" step = "any" min = "0.1" max = "100" id="Ib3"   class="form-control mt-1" name="num3" value = "{{num3}}" placeholder="0.5" required >
+                                <div class="input-group-text"><strong>%</strong></div>
+                                </div>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><strong>Number of Deferred periods</strong></div>
+                                        </div>
+                                        <input type="number" id="Ib4"   class="form-control mt-1" name="num4" value = "{{num4}}" placeholder="5" required >
+                                        </div>
+                            
+                    <div class="center col mt-2">
+                        <center>
+                        <input type="submit" class="btn btn-primary" value="Calculate" onclick="myFunction();">
+                        <input type="button" class="btn btn-danger" onclick="ClearFields();Clean();ClearFields();" value="Reset" style="margin-top: 5px;">
+                        </center>
+                    </div>
+                    </form>
+            </div>
+        </div>
+        </div>
+        {%if cas %}
+        <div class = "container" id = "cards">
+        <div class="card">
+            <h1 class="card-header" style="background-color:#00BFFF;color: white;">Deferred Annuity for the Given Parameters</h1>
+            <div class="card-body">
+                <p>Deferred Annuity = {{FV}}</p>
+            </div>
+        </div>
+        </div>
+    {% endif%}
+    {%if cas %}
 	<div class = "container" id = "cards1">
     <div class="card">
-        <h1 class="card-header" style="background-color:#00BFFF;color: white;">Steps to Find {{ukdim}} when {{kdim}} is given</h1>
+        <h1 class="card-header" style="background-color:#00BFFF;color: white;">Steps to Find Deferred Annuity</h1>
         <div class="card-body">
-            <p>Given Dimmension, {{kdim}} = {{given}}</p>
-            <p>The Silver Ratio is given by</p>
-            <p><h1><span class="frac"><sup>Length</sup><span>/</span><sub>Breadth</sub></span> = <span class="frac"><sup>1</sup><span>/</span><sub>2.41421356</sub></span></h1></p>
-            <p>Substiute the given {{kdim}} {{given}} in the above formula</p>
-            <p>We get, {{ukdim}} = {{res}}
-            </p>
+            <p>Given</p>
+            <ul>
+                <li><p>Annuity Payment = {{num1}}</p></li>
+                <li><p>Total Number of Years of Contract = {{num2}} years</p></li>
+                <li><p>Annual Interest Rate = {{num3}}%</p></li>
+                <li><p>Number of Deferred periods = {{num4}}</p></li>
+            </ul>
+            <p>The formula of Deferred Annuity is:-</p>
+            <p>Deferred Annuity = AP *[1-(1+r)<sub>-n</sub>]/[(1+r)<sub>t</sub>*r]</p>
+            <p>Here, </p>
+            <ul>
+                <li>AP = Annuity Payment = {{num1}}</li>
+                <li>r = Annual Interest Rate = {{num3}}%</li>
+                <li>n = Total Number of Years of Contract = {{num2}}</li>
+                <li>t = Number of Deferred Periods = {{num4}}</li>
+            </ul>
+            <p>Substitute the given values in given formula</p>
+            <p>Deferred Annuity = {{FV}}</p>
             </div>
             </div>
             </div>
@@ -179,5 +183,5 @@
         
             }
         </script>
-        </body>
-{%endblock%}
+    </body>
+    {%endblock%}

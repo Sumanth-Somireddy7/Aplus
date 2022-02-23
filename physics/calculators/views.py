@@ -4527,7 +4527,17 @@ def silver_ratio(request):
         mcas = False
         msg = ''
     else:
-        if num1 == '':
+        if num1=='' and num2=='':
+            cas = False
+            num1 = ''
+            num2 = ''
+            kdim = ''
+            ukdim = ''
+            given = ''
+            res = ''
+            mcas = True
+            msg = 'Enter either only length or breadth'
+        elif num1 == '':
             resmethod = breadthratio(float(num2))
             cas = True
             mcas = False
@@ -4557,24 +4567,6 @@ def silver_ratio(request):
             msg = 'Enter either only length or breadth'
     return render(request,'silverratio.html',{'cas':cas,'given':given,'res':res,'kdim':kdim,'ukdim':ukdim,'num1':num1,'num2':num2,'mcas':mcas,'msg':msg})
 
-def tree_age(request):
-    try:
-        num1 = request.POST['num1']
-        growthfactor = request.POST['growthfactor']
-    except:
-        num1 = ''
-        cas = False
-        res = ''
-        growthfactor = ''
-        age = ''
-        diameter = ''
-
-    else:
-        res = treeage(float(num1), float(growthfactor))
-        diameter = res[0]
-        age = res[1]
-        cas = True
-    return render(request,'treeage.html',{'num1':num1,'growthfactor':growthfactor,'cas':cas,'diameter':diameter,'age':age})
 
 def rule_of_72(request):
     try:
@@ -4592,7 +4584,16 @@ def rule_of_72(request):
         uk = ''
         uunit = ''
     else:
-        if num1=='':
+        if num1=='' and num2=='':
+            mcas = True
+            cas = False
+            res = ''
+            given = ''
+            gnum = ''
+            uk = ''
+            unit = ''
+            uunit = ''
+        elif num1=='':
             res = rule72rate(float(num2))
             cas = True
             mcas = False
@@ -4645,12 +4646,27 @@ def savings_goal(request):
         resdaily = (resmonthly*12)/365
         cas = True
     return render(request,'savingsgoal.html',{'num1':num1,'num2':num2,'num3':num3,'num4':num4,'resmonthly':resmonthly,'cas':cas,'resdaily':resdaily,'r':r})
-
-
-
-
-
-
+def deferred_annuity(request):
+    try:
+        num1 = request.POST['num1']
+        num2 = request.POST['num2']
+        num3 = request.POST['num3']
+        num4 = request.POST['num4']
+    except:
+        num1 = ''
+        num2 = ''
+        num3 = ''
+        num4 = ''
+        cas = False
+        FV = ''
+    else:
+        PA = float(num1)
+        n = float(num2)
+        i = float(float(num3)/100)
+        t = float(num4)
+        FV = annuity(PA,n,i,t)
+        cas = True
+    return render(request,'deferredfixed.html',{'num1':num1,'num2':num2,'num3':num3,'num4':num4,'cas':cas,'FV':FV})
 
 
 
